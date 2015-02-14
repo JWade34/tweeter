@@ -1,0 +1,8 @@
+<h2> Sooo you wanna contribute eh? </h2>
+
+<div class="container">
+<%= simple_form_for @post do |f| %>
+  <%= f.input :body, hint: " Write an awesome post here", label: "text" %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
+</div>

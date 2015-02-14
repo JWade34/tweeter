@@ -1,0 +1,20 @@
+<div style="background: #95a5a6;">
+<div class="container">
+  <h1 class="jumbotron">Welcome to TWEETER</h1>
+  <%= link_to "Add New Post", new_post_path, class: "btn btn-primary" %>
+  <%= link_to "Sign In", sign_in_path, class: "btn btn-primary pull-right" %>
+  <%= link_to "Sign Out", class: "btn btn-primary pull-right" %>
+  <br>
+  <br>
+  <ul style="list-style: none;" class="col-md-10 col-md-offset-1">
+    <% @posts.each do |post| %>
+    <li>
+      <%= post.body %> <br>
+    </li>
+    <br>
+    <% end %>
+  </ul>
+</div>
+
+<footer class="col-md-offset-1">Copywright JWADE - 2015</footer>
+</div>
