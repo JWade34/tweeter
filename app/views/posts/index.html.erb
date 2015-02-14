@@ -1,15 +1,24 @@
 <div style="background: #95a5a6;">
 <div class="container">
   <h1 class="jumbotron">Welcome to TWEETER</h1>
-  <%= link_to "Add New Post", new_post_path, class: "btn btn-primary" %>
+
+  <% if @current_user %>
+  <%= link_to "Sign Out", sign_out_path, class: "btn btn-default btn-lg pull-right" %>
+  <% end %>
+  <% unless @current_user %>
   <%= link_to "Sign In", sign_in_path, class: "btn btn-primary pull-right" %>
-  <%= link_to "Sign Out", class: "btn btn-primary pull-right" %>
+  <%= link_to "Sign Up", registrations_path(:login), class: "btn btn-primary pull-right" %>
+<% end %>
+
+  <%= link_to "Add New Post", new_post_path, class: "btn btn-primary" %>
+
   <br>
   <br>
   <ul style="list-style: none;" class="col-md-10 col-md-offset-1">
     <% @posts.each do |post| %>
     <li>
       <%= post.body %> <br>
+
     </li>
     <br>
     <% end %>

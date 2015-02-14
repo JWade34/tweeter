@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root 'posts#index'
 
   resources :posts
+  resources :registrations
 
   get "session/new" => "sessions#new", as: :sign_in
   post "session" => "sessions#create", as: :authenticate_session
-
   get "session/destroy" => "sessions#destroy", as: :sign_out
 
   # The priority is based upon order of creation: first created -> highest priority.

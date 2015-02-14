@@ -1,0 +1,11 @@
+<div class="container">
+
+<%= simple_form_for @user, url: wizard_path, method: :put do |f| %>
+  <%=  f.input :email  %>
+  <%=  f.input :facebook  %>  
+  <%= f.submit "Save and Complete", class: "btn btn-primary" %>
+<% end %>
+
+<hr/>
+<%= link_to 'back', previous_wizard_path %>
+</div>

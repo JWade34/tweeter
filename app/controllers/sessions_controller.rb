@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     # get credentials from the form
-    username = params[:name]
+    name = params[:name]
     password = params[:password]
 
     # find the user
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
 
     else
-      redirect_to sign_in_path, alert: "Username or Password not found"
+      redirect_to sign_in_path, alert: "Name or Password not found"
     end
 
   end
