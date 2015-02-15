@@ -1,6 +1,6 @@
 
 
-10.times do
+20.times do
   user = User.create! status: 'active',
                       email: Faker::Internet.email,
                       password: 'password',

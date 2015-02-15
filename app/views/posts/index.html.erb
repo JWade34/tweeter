@@ -18,6 +18,7 @@
     <% @posts.each do |post| %>
     <li>
       <%= post.body %> <br>
+      - <%= post.user.name %>
 
     </li>
     <br>
@@ -25,6 +26,21 @@
   </ul>
 </div>
 
+<h2>You are following: </h2>
+
+<% @current_user.all_following.each do |user| %>
+  <li><%= user.name %> - <%= link_to "unfollow", stop_following_path(user_id: user.id), method: :post, class: "btn btn-danger", data: {confirm: "Really stop following the super awesome tweets from #{user.name}?"} %> </li>
+<% end %>
+
+<h2> Not Following: </h2>
+
+<% @users.each do |user| %>
+    <% if @current_user.following?(user) %>
+    <li><%= user.name %> -
+      <%= link_to "follow", start_following_path(user_id: user.id), method: :post, class: "btn btn-default btn-xs"%>
+    <% end %>
+    </li>
+<% end %>
 
 
 <footer class="col-md-offset-1">Copywright JWADE - 2015</footer>

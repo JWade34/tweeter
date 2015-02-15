@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @users = User.all
+    @timeline = Post.timeline(@current_user).page params[:page]
   end
 
   def new

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   post "session" => "sessions#create", as: :authenticate_session
   get "session/destroy" => "sessions#destroy", as: :sign_out
 
+  post "/follows" => "follows#create", as: :start_following
+  post "/follows/stop" => "follows#destroy", as: :stop_following
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -41,10 +41,11 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'pry'
 gem 'kaminari'
 gem 'wicked'
 gem 'bootstrap-sass'
 gem 'simple_form', '3.1.0.rc2'
 
-gem "acts_as_follower"
+gem 'acts_as_follower'
 gem 'faker'
