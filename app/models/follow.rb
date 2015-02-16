@@ -1,5 +1,7 @@
 class Follow < ActiveRecord::Base
 
+  paginates_per 8
+
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes
 
