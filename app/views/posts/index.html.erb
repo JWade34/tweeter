@@ -1,9 +1,9 @@
-<div style="background: #95a5a6;">
+<html>
 <div class="container">
-  <h1 class="jumbotron">Welcome to TimeSuck</h1>
+  <h1 class="jumbotron">its the TWITTS</h1>
 
   <% if @current_user %>
-  <%= link_to "Sign Out", sign_out_path, class: "btn btn-default btn-lg pull-right" %>
+  <%= link_to "Sign Out", sign_out_path, class: "btn btn-default pull-right" %>
   <% end %>
   <% unless @current_user %>
   <%= link_to "Sign In", sign_in_path, class: "btn btn-primary pull-right" %>
@@ -14,21 +14,59 @@
 
   <br>
   <br>
-  <ul style="list-style: none;" class="col-md-10 col-md-offset-1">
-    <% @posts.each do |post| %>
-    <li>
-      <%= post.body %> <br>
-      - <%= post.user.name %>
 
-    </li>
-    <br>
-    <% end %>
-  </ul>
+  <div class="container">
+  <div class="follow">
 
+
+  <div class="col-md-3 col-xs-2">
+  <h4>Following</h4>
+  <% @current_user.all_following.each do |user| %>
+    <li><%= link_to "unfollow", stop_following_path(user_id: user.id), method: :post, class: "btn btn-danger btn-xs", data: {confirm: "Really stop following the super awesome tweets from #{user.name}?"} %>
+      - <%= user.name %> </li>
+  <% end %>
+
+  <h4> Follow These guys too </h4>
+  <% @users.each do |user| %>
+      <% unless @current_user.following?(user) %>
+      <li><%= link_to "follow", start_following_path(user_id: user.id), method: :post, class: "btn btn-default btn-xs"%>
+       - <%= user.name %> </li>
+      <% end %>
+  <% end %>
 </div>
 
-<h2>You are following: </h2>
+    <div class="col-md-9 col-xs-9">
+      <h4>What people you follow are saying:</h4>
+      <br>
+    <% @timeline.each do |w| %>
+    <ul>
+      <h5><%= w.body %></h5>
+      - <%= w.user.name %>
+
+    </ul>
+    <% end %>
+    <%= paginate @timeline %>
+    </div>
+  </div>
+
+
+
+  <ul style="list-style: none;" class="col-md-9">
+    <h4>Read what others are saying:</h4>
+    <% @posts.each do |post| %>
+    <ul>
+      <%= post.body %> <br>
+      - <%= post.user.name %>
+    </ul>
+    <br>
+    <% end %>
+    <%= paginate @posts %>
+
+  </ul>
+
+
+</div>
 
 
 <footer class="col-md-offset-1">Copywright JWADE - 2015</footer>
-</div>
+</html>
