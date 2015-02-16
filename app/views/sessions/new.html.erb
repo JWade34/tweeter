@@ -12,13 +12,15 @@
     <%= password_field_tag :password %>
   </div>
 
+  <br>
+
   <div>
-    <%= submit_tag "Sign in" %>
+    <%= submit_tag "Sign in", class: "btn btn-default" %>
   </div>
 
 <% end %>
 
   <p> - or - <p>
-  <%= link_to "Sign Up", registration_path(:login)  %>
+  <%= link_to "Sign Up", registration_path(:login), class: "btn btn-default"  %>
 
 </div>
