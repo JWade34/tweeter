@@ -51,3 +51,5 @@ gem 'simple_form', '3.1.0.rc2'
 
 gem 'acts_as_follower'
 gem 'faker'
+gem 'modernizr-rails'
+gem "font-awesome-rails"

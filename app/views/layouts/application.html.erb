@@ -5,10 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="path/to/your/css/slide-social-buttons.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 </head>
 <body>
 
 <%= yield %>
-
+<%= javascript_include_tag :application %>
 </body>
 </html>
