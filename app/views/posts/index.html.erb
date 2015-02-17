@@ -3,7 +3,7 @@
   <h1 class="jumbotron">its the TWITTS</h1>
 
   <% if @current_user %>
-  <%= link_to "Sign Out", sign_out_path, class: "btn btn-default pull-right" %>
+  <%= link_to "Sign Out", sign_out_path, class: "btn btn-primary pull-right" %>
   <% end %>
   <% unless @current_user %>
   <%= link_to "Sign In", sign_in_path, class: "btn btn-primary pull-right" %>
@@ -22,14 +22,14 @@
   <div class="col-md-3 col-xs-2">
   <h4>Following</h4>
   <% @current_user.all_following.each do |user| %>
-    <li><%= link_to "unfollow", stop_following_path(user_id: user.id), method: :post, class: "btn btn-danger btn-xs", data: {confirm: "Really stop following the super awesome tweets from #{user.name}?"} %>
+    <li style="list-style-type: none;"><%= link_to "unfollow", stop_following_path(user_id: user.id), method: :post, class: "btn btn-danger btn-xs", data: {confirm: "Really stop following the super awesome tweets from #{user.name}?"} %>
       - <%= user.name %> </li>
   <% end %>
 
   <h4> Follow These guys too </h4>
   <% @users.each do |user| %>
       <% unless @current_user.following?(user) %>
-      <li><%= link_to "follow", start_following_path(user_id: user.id), method: :post, class: "btn btn-default btn-xs"%>
+      <li style="list-style-type: none;"><%= link_to "follow", start_following_path(user_id: user.id), method: :post, class: "btn btn-success btn-xs"%>
        - <%= user.name %> </li>
       <% end %>
   <% end %>
@@ -42,7 +42,6 @@
     <ul>
       <h5><%= w.body %></h5>
       - <%= w.user.name %>
-
     </ul>
     <% end %>
     <%= paginate @timeline %>
